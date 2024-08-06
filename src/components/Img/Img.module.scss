@@ -1,0 +1,32 @@
+.img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 22rem;
+  width: 25rem;
+  cursor: pointer;
+  position: relative;
+
+  @include media(m) {
+    height: 17.5rem;
+    width: 20.5rem;
+  }
+
+  @include media(s) {
+    height: 220px;
+    width: 280px;
+  }
+
+  @include media(xs) {
+    height: 14rem;
+    width: 15rem;
+  }
+
+  img {
+    border-radius: 3%;
+    box-shadow: 0.3px 0.8px 1.1px 0px #8d8d8d1c;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}

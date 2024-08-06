@@ -1,0 +1,24 @@
+.layout {
+  background-color: hsl(0, 0, 90%);
+  min-height: 100vh;
+  width: 100%;
+  @include flex(center, center, row, 0rem);
+
+  ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 2.5rem;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+
+    @include media(xl) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include media(l) {
+      grid-template-columns: 1fr;
+    }
+  }
+}

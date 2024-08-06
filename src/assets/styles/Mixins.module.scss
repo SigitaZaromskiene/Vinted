@@ -1,0 +1,31 @@
+@mixin media($point) {
+  @if $point == xs {
+    @media (max-width: 22rem) {
+      @content;
+    }
+  } @else if ($point) == s {
+    @media (max-width: 26rem) {
+      @content;
+    }
+  } @else if $point == m {
+    @media (max-width: 34rem) {
+      @content;
+    }
+  } @else if $point == l {
+    @media (max-width: 59rem) {
+      @content;
+    }
+  } @else if $point == xl {
+    @media (max-width: 84rem) {
+      @content;
+    }
+  }
+}
+
+@mixin flex($justify, $align, $direction, $gap) {
+  align-items: $align;
+  display: flex;
+  flex-direction: $direction;
+  gap: $gap;
+  justify-content: $justify;
+}

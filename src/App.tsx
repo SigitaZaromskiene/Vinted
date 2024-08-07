@@ -1,30 +1,48 @@
-import { ReactElement, useState, useEffect } from "react";
+import { ReactElement, useState, useEffect, useRef } from "react";
 import "./assets/styles/App.scss";
 import Layout from "./components/Layout/Layout";
 import Overlay from "./components/Overlay/Overlay";
-import { usePhotos} from "./components/App.logic";
-
-
-
-
-
-
+import { usePhotos } from "./components/App.logic";
 
 const KEY = "SavedImg";
 
-const App=():ReactElement=>{
-  
+const App = (): ReactElement => {
   const [hoveredImg, setHoveredImg] = useState<string | null>(null);
   const [photoId, setPhotoId] = useState<string[]>(() => {
     const saved = localStorage.getItem(KEY);
     return saved ? JSON.parse(saved) : [];
   });
-  const { imgList, getPhotos } = usePhotos();
+  const { imgList, getPhotos, setPage } = usePhotos();
 
+  const observer = useRef<IntersectionObserver>();
+  const lastPhotoRef = useRef<HTMLLIElement | null>(null);
   
+
   useEffect(() => {
-    getPhotos();
+    getPhotos(1);
   }, []);
+
+  useEffect(() => {
+    if (observer.current) observer.current.disconnect();
+
+    observer.current = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setPage((prevPage) => {
+            const nextPage = prevPage + 1;
+            getPhotos(nextPage);
+            return nextPage;
+          });
+        }
+      },
+      { threshold: 1.0 }
+    );
+    if (lastPhotoRef.current) observer.current.observe(lastPhotoRef.current);
+
+    return () => {
+      if (observer.current) observer.current.disconnect();
+    };
+  }, [imgList]);
 
   useEffect(() => {
     localStorage.setItem(KEY, JSON.stringify(photoId));
@@ -47,17 +65,20 @@ const App=():ReactElement=>{
     setPhotoId((prevId) => prevId.filter((photoId) => photoId !== id));
   };
 
-
   return (
     <Layout>
-      {imgList.map((img)=> (
+      {imgList.map((img,i) => {
+        const isLastPhoto = i === imgList.length - 1;
+        return (
         <li
           key={img.id}
           className="img-container"
           onMouseEnter={() => handleMouseEnter(img.id)}
           onMouseLeave={handleMouseLeave}
+          ref={isLastPhoto ? lastPhotoRef : null}
         >
-          <img className="img-container"
+          <img
+            className="img-container"
             loading="lazy"
             src={`https://live.staticflickr.com/${img.server}/${img.id}_${img.secret}_m.jpg`}
             alt={img.title}
@@ -71,9 +92,10 @@ const App=():ReactElement=>{
             />
           )}
         </li>
-      ))}
+      )})}
     </Layout>
   );
+  
 };
 
 export default App;

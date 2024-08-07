@@ -23,7 +23,7 @@ const Overlay: React.FC<OverlayProps> = ({
 
   return (
     <div className="overlay-container">
-      <h1 className="overlay-container__author">{img.title}</h1>
+      <h1 className="overlay-container__owner">{img.owner}</h1>
       <div className="overlay-container__border"></div>
       <i className="overlay-container__title">{img.title}</i>
       <button

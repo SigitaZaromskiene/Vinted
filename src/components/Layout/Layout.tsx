@@ -7,7 +7,7 @@ type LayoutProps = {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="layout">
-      <ul>{children}</ul>
+      <ul className="layout__img-list">{children}</ul>
     </div>
   );
 };

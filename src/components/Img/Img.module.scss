@@ -2,10 +2,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 22rem;
-  width: 25rem;
+  height: 25rem;
+  width: 37rem;
   cursor: pointer;
   position: relative;
+
+  @include media(xxl) {
+    height: 22.5rem;
+    width: 30.5rem;
+  }
+
+  @include media(l) {
+    height: 20.5rem;
+    width: 27.5rem;
+  }
 
   @include media(m) {
     height: 17.5rem;
@@ -22,7 +32,7 @@
     width: 15rem;
   }
 
-  img {
+  &__img {
     border-radius: 3%;
     box-shadow: 0.3px 0.8px 1.1px 0px #8d8d8d1c;
     height: 100%;

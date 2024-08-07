@@ -4,7 +4,7 @@
   width: 100%;
   @include flex(center, center, row, 0rem);
 
-  ul {
+  &__img-list {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     padding: 2.5rem;
@@ -17,7 +17,7 @@
       grid-template-columns: 1fr 1fr;
     }
 
-    @include media(l) {
+    @include media(s) {
       grid-template-columns: 1fr;
     }
   }

@@ -1,4 +1,5 @@
 .overlay-container {
+  @include flex(center, center, column, 0.5rem);
   position: absolute;
   top: 0;
   left: 0;
@@ -6,9 +7,70 @@
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.436);
   z-index: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   transition: opacity 0.3s ease;
   border-radius: 3%;
+  color: white;
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 1rem;
+
+  @include media(s) {
+    @include flex(center, center, column, 0.2rem);
+  }
+
+  &__author {
+    font-weight: 600;
+    margin-top: 15%;
+  }
+  &__border {
+    border-top: 2px solid white;
+    width: 6rem;
+  }
+
+  &__title {
+    font-weight: 400;
+    font-size: 1.2rem;
+  }
+
+  %commonButtonStyles {
+    border: 1px solid white;
+    cursor: pointer;
+    border-radius: 20px;
+    padding: 0.6rem 0.5rem;
+    text-align: center;
+    color: white;
+    margin-top: 2rem;
+  }
+
+  &__button {
+    @extend %commonButtonStyles;
+    background-color: transparent;
+    width: 8rem;
+    font-size: 1.3rem;
+
+    @include media(s) {
+      font-size: 0.8rem;
+      width: 7rem;
+    }
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.379);
+    }
+  }
+
+  &__activeButton {
+    @extend %commonButtonStyles;
+    width: 18rem;
+    background-color: red;
+    font-size: 1.3rem;
+
+    @include media(s) {
+      font-size: 0.8rem;
+      width: 12rem;
+    }
+
+    &:hover {
+      background-color: rgba(255, 0, 0, 0.661);
+    }
+  }
 }

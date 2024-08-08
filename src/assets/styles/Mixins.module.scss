@@ -4,7 +4,7 @@
       @content;
     }
   } @else if ($point) == s {
-    @media (max-width: 48rem) {
+    @media (max-width: 44rem) {
       @content;
     }
   } @else if $point == m {
@@ -15,12 +15,11 @@
     @media (max-width: 83rem) {
       @content;
     }
-  }
-  @else if $point == xl {
+  } @else if $point == xl {
     @media (max-width: 100rem) {
       @content;
     }
-  }  @else if $point == xxl {
+  } @else if $point == xxl {
     @media (max-width: 102rem) {
       @content;
     }

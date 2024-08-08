@@ -16,7 +16,6 @@ const App = (): ReactElement => {
 
   const observer = useRef<IntersectionObserver>();
   const lastPhotoRef = useRef<HTMLLIElement | null>(null);
-  
 
   useEffect(() => {
     getPhotos(1);
@@ -61,41 +60,66 @@ const App = (): ReactElement => {
       setPhotoId((prevId) => [...prevId, id]);
     }
   };
+
   const removeItemFromFavourites = (id: string) => {
     setPhotoId((prevId) => prevId.filter((photoId) => photoId !== id));
   };
 
+  useEffect(() => {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const image = entry.target as HTMLImageElement;
+          const src = image.getAttribute("data-src");
+          if (src) {
+            image.src = src;
+            observer.unobserve(image);
+          }
+        }
+      });
+    });
+
+    const images = document.querySelectorAll(".img-container__img");
+    images.forEach((image) => imageObserver.observe(image));
+
+    return () => {
+      imageObserver.disconnect();
+    };
+  }, [imgList]);
+
   return (
     <Layout>
-      {imgList.map((img,i) => {
-        const isLastPhoto = i === imgList.length - 1;
-        return (
-        <li
-          key={img.id}
-          className="img-container"
-          onMouseEnter={() => handleMouseEnter(img.id)}
-          onMouseLeave={handleMouseLeave}
-          ref={isLastPhoto ? lastPhotoRef : null}
-        >
-          <img
-            className="img-container"
-            loading="lazy"
-            src={`https://live.staticflickr.com/${img.server}/${img.id}_${img.secret}_m.jpg`}
-            alt={img.title}
-          />
-          {hoveredImg === img.id && (
-            <Overlay
-              img={img}
-              photoId={photoId}
-              onAddToFavourites={handleAddToFavorites}
-              onRemoveFromFavourites={removeItemFromFavourites}
-            />
-          )}
-        </li>
-      )})}
+      <ul className="layout__img-list">
+        {imgList.map((img, i) => {
+          const isLastPhoto = i === imgList.length - 1;
+          return (
+            <li
+              key={img.id}
+              className="img-container"
+              onMouseEnter={() => handleMouseEnter(img.id)}
+              onMouseLeave={handleMouseLeave}
+              ref={isLastPhoto ? lastPhotoRef : null}
+            >
+              <img
+                className="img-container__img"
+                data-src={`https://live.staticflickr.com/${img.server}/${img.id}_${img.secret}_m.jpg`}
+                alt={img.title}
+                loading="lazy"
+              />
+              {hoveredImg === img.id && (
+                <Overlay
+                  img={img}
+                  photoId={photoId}
+                  onAddToFavourites={handleAddToFavorites}
+                  onRemoveFromFavourites={removeItemFromFavourites}
+                />
+              )}
+            </li>
+          );
+        })}
+      </ul>
     </Layout>
   );
-  
 };
 
 export default App;

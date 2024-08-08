@@ -1,17 +1,19 @@
 .layout {
-  background-color: hsl(0, 0, 90%);
-  min-height: 100vh;
-  width: 100%;
-  @include flex(center, center, row, 0rem);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
 
   &__img-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    padding: 2.5rem;
-    list-style: none;
-    justify-content: center;
     align-items: center;
+    display: grid;
     gap: 1.5rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    list-style: none;
+    padding: 2.5rem;
 
     @include media(xl) {
       grid-template-columns: 1fr 1fr;
@@ -19,6 +21,7 @@
 
     @include media(s) {
       grid-template-columns: 1fr;
+      height: 550px;
     }
   }
 }

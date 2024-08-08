@@ -1,30 +1,28 @@
 import { useState } from "react";
 
-
 export type ImgProps = {
-    id: string;
-    owner: string;
-    farm: number;
-    isfamily: number;
-    ispublic: number;
-    secret: string;
-    server: string;
-    title: string;
-  };
+  id: string;
+  owner: string;
+  farm: number;
+  isfamily: number;
+  ispublic: number;
+  secret: string;
+  server: string;
+  title: string;
+};
 
-  export const usePhotos = () => {
-    const [imgList, setImgList] = useState<ImgProps[]>([]);
-    const [page, setPage] = useState(1)
+export const usePhotos = () => {
+  const [imgList, setImgList] = useState<ImgProps[]>([]);
 
-    
+  console.log(imgList);
+  const [page, setPage] = useState(1);
 
-
-const getPhotos = async (page:number)=> {
+  const getPhotos = async (page: number) => {
     const apiKey = "07a847c289054889fe31484a7e2f4e5d";
     const method = "flickr.photos.search";
-    const searchQuery = "animals";
+    const searchQuery = "all";
     const format = "json";
-    const nojsoncallback = 100;
+    const nojsoncallback = 1000;
 
     const url = `https://www.flickr.com/services/rest/?method=${method}&api_key=${apiKey}&text=${searchQuery}&format=${format}&nojsoncallback=${nojsoncallback}&page=${page}`;
 
@@ -47,14 +45,11 @@ const getPhotos = async (page:number)=> {
         error
       );
     }
-  }
-
-
+  };
 
   return {
     imgList,
     getPhotos,
-    setPage
+    setPage,
   };
-}
-
+};

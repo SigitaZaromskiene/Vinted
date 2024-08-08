@@ -1,8 +1,4 @@
-# SFE24 Lunch App
-
-## Tech Stack
-
-Project is setup using Vite (React / TypeScript), PostCSS, Jest, React Testing Library.
+Project is setup using Vite (React / TypeScript), SCSS modules.
 
 ## How to setup and run the project
 

@@ -1,52 +1,63 @@
 .overlay-container {
   @include flex(center, center, column, 0.5rem);
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   background-color: rgba(0, 0, 0, 0.436);
-  z-index: 1;
-  transition: opacity 0.3s ease;
   border-radius: 3%;
+  bottom: 0;
   color: white;
   font-size: 0.8rem;
+  left: 0;
+  padding: 2rem;
+  position: absolute;
+  right: 0;
   text-align: center;
-  padding: 1rem;
+  top: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
 
   @include media(s) {
     @include flex(center, center, column, 0.2rem);
+    font-size: 0.6rem;
   }
 
   &__owner {
     font-weight: 600;
     margin-top: 15%;
   }
+
   &__border {
     border-top: 2px solid white;
     width: 6rem;
   }
 
   &__title {
-    font-weight: 400;
     font-size: 1.2rem;
+    font-weight: 400;
+    max-width: 100%; // Ensure title doesn't exceed container width
+    overflow: hidden; // Hide any overflow
+    text-overflow: ellipsis; // Add ellipsis for truncated text
+    white-space: nowrap; // Prevent wrapping; use 'normal' for wrapping
+
+    @include media(s) {
+      font-size: 1rem;
+      white-space: normal; // Allow wrapping on smaller screens if needed
+    }
   }
 
   %commonButtonStyles {
     border: 1px solid white;
-    cursor: pointer;
     border-radius: 20px;
+    color: white;
+    cursor: pointer;
+    margin-top: 2rem;
     padding: 0.6rem 0.5rem;
     text-align: center;
-    color: white;
-    margin-top: 2rem;
   }
 
   &__button {
     @extend %commonButtonStyles;
     background-color: transparent;
-    width: 8rem;
     font-size: 1.3rem;
+    width: 8rem;
 
     @include media(s) {
       font-size: 0.8rem;
@@ -60,9 +71,9 @@
 
   &__activeButton {
     @extend %commonButtonStyles;
-    width: 18rem;
     background-color: red;
     font-size: 1.3rem;
+    width: 18rem;
 
     @include media(s) {
       font-size: 0.8rem;

@@ -10,7 +10,7 @@
     "coverage": "jest --coverage",
     "build": "tsc && vite build",
     "lint:css": "stylelint '**/*.scss'",
-  "lint:css:fix": "stylelint '**/*.scss' --fix",
+    "lint:css:fix": "stylelint '**/*.scss' --fix",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint src --fix --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "stylelint": "stylelint src/**/*.{css,module.css}",

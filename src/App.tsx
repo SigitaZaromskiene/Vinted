@@ -6,7 +6,7 @@ import { usePhotos } from "./components/App.logic";
 
 const KEY = "SavedImg";
 
-const App = (): ReactElement => {
+export const App = (): ReactElement => {
   const [hoveredImg, setHoveredImg] = useState<string | null>(null);
   const [photoId, setPhotoId] = useState<string[]>(() => {
     const saved = localStorage.getItem(KEY);

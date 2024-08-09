@@ -39,7 +39,7 @@ export const App = (): ReactElement => {
     if (lastPhotoRef.current) observer.current.observe(lastPhotoRef.current);
 
     return () => {
-      if (observer.current) observer.current.disconnect();
+      if (observer.current) observer.current?.disconnect();
     };
   }, [imgList]);
 

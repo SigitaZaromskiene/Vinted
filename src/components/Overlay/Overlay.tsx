@@ -1,4 +1,4 @@
-import { ImgProps } from "./App";
+import { ImgProps } from "../App.logic"
 
 export type OverlayProps = {
   img: ImgProps;

@@ -42,3 +42,6 @@ The following `npm` commands that are available from the projects root:
 `npm run stylelint` - run stylelinter.\
 `npm run stylelint:fix` - fix stylelint errors.\
 `npm run pretify` - run prettier.\
+
+
+### If you face any issues while using npm i, please use npm i --force

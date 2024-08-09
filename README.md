@@ -1,3 +1,5 @@
+# Vinted Frontend Homework Assignment
+
 Project is setup using Vite (React / TypeScript), SCSS modules.
 
 ## How to setup and run the project
@@ -8,7 +10,7 @@ Project is setup using Vite (React / TypeScript), SCSS modules.
 
 First, make sure that you have NVM installed on your machine, guideliness on how to do that and the documentation can be found here
 
-**Linux**
+**Linux/MacOS**
 
 https://github.com/nvm-sh/nvm
 

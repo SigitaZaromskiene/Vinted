@@ -14,7 +14,6 @@ export type ImgProps = {
 export const usePhotos = () => {
   const [imgList, setImgList] = useState<ImgProps[]>([]);
 
-  console.log(imgList);
   const [page, setPage] = useState(1);
 
   const getPhotos = async (page: number) => {

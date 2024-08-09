@@ -5,11 +5,12 @@
   list-style: none;
   padding: 0;
   margin: 0 auto;
+  background-color: rgb(241, 236, 236);
 
   &__img-list {
     align-items: center;
     display: grid;
-    gap: 1.5rem;
+    gap: 2.5rem;
     grid-template-columns: 1fr 1fr 1fr;
     justify-content: center;
     list-style: none;

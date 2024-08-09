@@ -1,5 +1,5 @@
 .overlay-container {
-  @include flex(center, center, column, 0.5rem);
+  @include flex(center, center, column, 0.8rem);
   background-color: rgba(0, 0, 0, 0.436);
   border-radius: 3%;
   bottom: 0;
@@ -32,14 +32,13 @@
   &__title {
     font-size: 1.2rem;
     font-weight: 400;
-    max-width: 100%; // Ensure title doesn't exceed container width
-    overflow: hidden; // Hide any overflow
-    text-overflow: ellipsis; // Add ellipsis for truncated text
-    white-space: nowrap; // Prevent wrapping; use 'normal' for wrapping
-
+    max-width: 100%; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    white-space: nowrap; 
     @include media(s) {
       font-size: 1rem;
-      white-space: normal; // Allow wrapping on smaller screens if needed
+      white-space: normal; 
     }
   }
 

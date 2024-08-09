@@ -1,5 +1,6 @@
 module.exports = {
-  setupFilesAfterEnv: ['./jest.setup.js'],
+  preset: 'ts-jest',
+  setupFilesAfterEnv: ['./jest.setup.ts'],
   transform: {
     '^.+\\.(t|j)sx?$': [
       '@swc/jest',
@@ -15,8 +16,9 @@ module.exports = {
     ],
   },
   moduleNameMapper: {
-    '\\.(css|png)$': 'identity-obj-proxy',
+    '\\.(css|png|scss|sass|less)$': 'identity-obj-proxy',
     '^@/(.*)$': '<rootDir>/src/$1',
   },
   testEnvironment: 'jest-environment-jsdom',
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
 };

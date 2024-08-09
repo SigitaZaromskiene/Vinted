@@ -24,8 +24,8 @@
   "include": [
     "src",
     ".eslintrc.cjs",
-    "./jest.config.cjs",
-    "./jest.setup.js",
+    "jest.config.js",
+    "jest.setup.ts",
     "./postcss.config.cjs"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
